@@ -11,6 +11,7 @@
 
 - [A (Mostly) Complete Guide to React Rendering Behavior](#a-mostly-complete-guide-to-react-rendering-behavior)
 - [Design Patterns](#design-patterns)
+  - [Context API](#context-api)
   - [Redux](#redux)
     - [What is it?](#what-is-it)
     - [Purpose and Use Cases](#purpose-and-use-cases)
@@ -20,9 +21,14 @@
 
 # A (Mostly) Complete Guide to React Rendering Behavior
 
-https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/
+- [A (Mostly) Complete Guide to React Rendering Behavior](https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/)
 
 # Design Patterns
+
+- [A better way of solving prop drilling in React apps](https://blog.logrocket.com/solving-prop-drilling-react-apps/)
+- [What is Context API and useContext? Everything You Need to Know](https://www.alphabold.com/what-is-context-api-and-usecontext/)
+
+## Context API
 
 ## Redux
 
