@@ -11,6 +11,7 @@
 
 - [A (Mostly) Complete Guide to React Rendering Behavior](#a-mostly-complete-guide-to-react-rendering-behavior)
 - [Why using React?](#why-using-react)
+- [Routing](#routing)
 - [Design Patterns](#design-patterns)
   - [Context API](#context-api)
   - [Redux](#redux)
@@ -92,6 +93,11 @@ for web applications. Here are some key reasons why developers use React:
 
 These benefits make React a versatile and efficient tool for building modern web
 applications, from small personal projects to large enterprise-grade systems.
+
+# Routing
+
+Read [this documentation](https://reactrouter.com/en/main/start/overview) and
+talk about it.
 
 # Design Patterns
 
