@@ -21,6 +21,7 @@
     - [When Should I Consider Using This?](#when-should-i-consider-using-this)
     - [Redux is too much boilerplate, how all of this came about?](#redux-is-too-much-boilerplate-how-all-of-this-came-about)
 - [Difference Between ReactNode and JSXElement](#difference-between-reactnode-and-jsxelement)
+- [Queueing a Series of State Updates](#queueing-a-series-of-state-updates)
 
 # A (Mostly) Complete Guide to React Rendering Behavior
 
@@ -283,3 +284,7 @@ kinds of problems.
   only a single React element is accepted.
   2. ReactNode is more flexible and can represent any renderable output,
   including multiple elements, text, arrays, and even null.
+
+# Queueing a Series of State Updates
+
+Read [this documentation](https://react.dev/learn/queueing-a-series-of-state-updates).
