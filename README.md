@@ -20,6 +20,7 @@
     - [Tradeoffs](#tradeoffs)
     - [When Should I Consider Using This?](#when-should-i-consider-using-this)
     - [Redux is too much boilerplate, how all of this came about?](#redux-is-too-much-boilerplate-how-all-of-this-came-about)
+- [Difference Between ReactNode and JSXElement](#difference-between-reactnode-and-jsxelement)
 
 # A (Mostly) Complete Guide to React Rendering Behavior
 
@@ -239,3 +240,46 @@ Since then, a lot of things have changed:
 1. React developed its own native solution to solve the _prop drilling_ problem.
 2. There are other many good library and ecosystems that solve some of the same
 kinds of problems.
+
+# Difference Between ReactNode and JSXElement
+
+ - **JSX.Element**
+
+    Represents a single React element created using JSX. It's a more specific
+    type that corresponds to what React.createElement returns. Typically used
+    when you're expecting a single element to be rendered.
+
+    ```TypeScript
+      const element: JSX.Element = <h1>Hello, world!</h1>;
+    ```
+
+ - **React.Node**
+
+  A broader type that can represent anything that React can render.
+
+  It includes:
+
+  - JSX.Element
+  - Strings (e.g., "text")
+  - Numbers (e.g., 123)
+  - Booleans (true or false are ignored by React)
+  - null or undefined (representing no rendering)
+  - Arrays of other ReactNode elements
+  - React.Fragment
+
+  ```TypeScript
+    const node: React.ReactNode = (
+      <>
+        <h1>Hello, world!</h1>
+        <p>This is a paragraph.</p>
+        {"Some text"}
+      </>
+    );
+  ```
+
+  **Key Differences:**
+
+  1. JSX.Element is used when you want to be strict about the type and ensure
+  only a single React element is accepted.
+  2. ReactNode is more flexible and can represent any renderable output,
+  including multiple elements, text, arrays, and even null.
