@@ -22,6 +22,18 @@
     - [Redux is too much boilerplate, how all of this came about?](#redux-is-too-much-boilerplate-how-all-of-this-came-about)
 - [Difference Between ReactNode and JSXElement](#difference-between-reactnode-and-jsxelement)
 - [Queueing a Series of State Updates](#queueing-a-series-of-state-updates)
+- [Portals](#portals)
+- [Higher Order Components](#higher-order-components)
+- [Custom Hooks](#custom-hooks)
+- [Improving Performance](#improving-performance)
+- [Suspense and Lazy Loading](#suspense-and-lazy-loading)
+- [Error Boundary](#error-boundary)
+- [What is VDOM And How Does it work?](#what-is-vdom-and-how-does-it-work)
+- [How does strict mode impacts the react app](#how-does-strict-mode-impacts-the-react-app)
+- [How to conttrol unwanted re renders](#how-to-control-unwanted-re-renders)
+- [Development Patterns](#development-patterns)
+  - Single Souce Of Truth
+  - State While Revalidate
 
 # A (Mostly) Complete Guide to React Rendering Behavior
 
