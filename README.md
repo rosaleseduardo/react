@@ -300,3 +300,9 @@ kinds of problems.
 # Queueing a Series of State Updates
 
 Read [this documentation](https://react.dev/learn/queueing-a-series-of-state-updates).
+
+# Portals
+
+Read [this documentation](https://react.dev/reference/react-dom/createPortal).
+
+Also, take a look at this [video tutorial](https://www.youtube.com/watch?v=lDAmVwY-oPU).
