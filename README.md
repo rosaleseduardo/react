@@ -22,8 +22,6 @@
     - [Redux is too much boilerplate, how all of this came about?](#redux-is-too-much-boilerplate-how-all-of-this-came-about)
 - [Difference Between ReactNode and JSXElement](#difference-between-reactnode-and-jsxelement)
 - [Queueing a Series of State Updates](#queueing-a-series-of-state-updates)
-- [Portals](#portals)
-- [Higher Order Components](#higher-order-components)
 - [Custom Hooks](#custom-hooks)
 - [Improving Performance](#improving-performance)
 - [Suspense and Lazy Loading](#suspense-and-lazy-loading)
@@ -32,8 +30,16 @@
 - [How does strict mode impacts the react app](#how-does-strict-mode-impacts-the-react-app)
 - [How to conttrol unwanted re renders](#how-to-control-unwanted-re-renders)
 - [Development Patterns](#development-patterns)
-  - Single Souce Of Truth
-  - State While Revalidate
+  - [Presentational and Container Components](#presentational-and-container-components)
+  - [Higher Order Components](#higher-order-components)
+  - [Render Props](#render-props)
+  - [Controlled vs. Uncontrolled Components](#controlled-vs-uncontrolled-components)
+  - [Custom Hooks](#custom-hooks)
+  - [Compound Components](#compound-components)
+  - [Portals](#portals)
+  - [Controlled vs. Uncontrolled Input Components](#controlled-vs-uncontrolled-input-components)
+  - [Error Boundaries](#error-boundaries)
+  - [Functional Components & Hooks](#functional-components--hooks)
 
 # A (Mostly) Complete Guide to React Rendering Behavior
 
@@ -110,8 +116,7 @@ applications, from small personal projects to large enterprise-grade systems.
 
 # Routing
 
-Read [this documentation](https://reactrouter.com/en/main/start/overview) and
-talk about it.
+Read [this documentation](https://reactrouter.com/en/main/start/overview).
 
 # State Management
 
@@ -120,7 +125,7 @@ talk about it.
 
 ## Context API
 
-Habla de Context API acá
+Read [this documentation](https://react.dev/reference/react/createContext).
 
 ## Redux
 
@@ -301,8 +306,114 @@ kinds of problems.
 
 Read [this documentation](https://react.dev/learn/queueing-a-series-of-state-updates).
 
-# Portals
+# Development Patterns
+
+### Presentational and Container Components
+
+  - _Presentational Components_: These are primarily concerned with how things look.
+  They receive data and callbacks exclusively via props and don’t have their own
+  state (except for UI state).
+
+  - _Container Components_: These are concerned with how things work. They handle
+  state, business logic, and data fetching, passing data down to presentational
+  components as props.
+
+  Example:
+
+    - Presentational: Button, Card
+    - Container: UserListContainer (fetches users, manages state)
+
+### Higher Order Components
+
+A function that takes a component and returns a new component with added props or behavior. This pattern helps in sharing common functionality between components.
+
+Use Cases: Authentication checks, logging, data fetching, etc.
+
+### Render Props
+
+A pattern where a component accepts a function as a prop. This function returns React elements, allowing you to dynamically decide what to render.
+
+Example: Sharing state between components, custom input handlers, etc.
+
+Code Example:
+
+```JavaScript
+const MouseTracker = ({ render }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (event) => {
+    setPosition({ x: event.clientX, y: event.clientY });
+  };
+
+  return (
+    <div onMouseMove={handleMouseMove}>
+      {render(position)}
+    </div>
+  );
+};
+
+<MouseTracker render={({ x, y }) => (
+  <p>The mouse position is ({x}, {y})</p>
+)} />
+```
+
+### Controlled vs. Uncontrolled Components
+
+  - Controlled Components: The React component controls the form input values via state.
+  - Uncontrolled Components: Form inputs maintain their own state. You access values via refs.
+
+Use Case: For simple forms, uncontrolled components can be used. For more complex forms, controlled components offer better control and validation.
+
+### Custom Hooks
+
+With React Hooks, custom hooks allow you to extract reusable logic into separate functions. This pattern has become more common than HOCs or Render Props in modern React.
+
+Use Case: Handling forms, data fetching, authentication, subscriptions, etc.
+
+### Compound Components
+
+Components that are designed to work together, giving flexibility to the user of the component. It allows developers to create components that manage their internal state while still being configurable by the user.
+
+Use Case: Custom dropdowns, tabs, modals, etc.
+
+Example:
+
+```JavaScript
+const Tabs = ({ children }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <div>
+      {React.Children.map(children, (child, index) =>
+        React.cloneElement(child, { activeIndex, setActiveIndex, index })
+      )}
+    </div>
+  );
+};
+```
+
+### Portals
 
 Read [this documentation](https://react.dev/reference/react-dom/createPortal).
 
 Also, take a look at this [video tutorial](https://www.youtube.com/watch?v=lDAmVwY-oPU).
+
+### Controlled vs. Uncontrolled Input Components
+
+  - Controlled: Component state drives the input value.
+
+  - Uncontrolled: Native HTML form elements control their state via refs.
+
+Example: Forms can be handled using either approach, but controlled components are usually preferred for complex forms.
+
+### Error Boundaries
+
+A way to catch JavaScript errors anywhere in the component tree and provide a fallback UI. Error boundaries are created by implementing the componentDidCatch and getDerivedStateFromError lifecycle methods.
+
+Use Case: Wrapping components that may fail, such as third-party widgets or components with unpredictable external dependencies.
+
+### Functional Components & Hooks
+
+In modern React, functional components and hooks have replaced many class-based patterns. Hooks allow for logic reuse, state management, and side-effects management without classes.
+
+- Key Hooks: useState, useEffect, useContext, useReducer, useMemo, useCallback, and useRef.
